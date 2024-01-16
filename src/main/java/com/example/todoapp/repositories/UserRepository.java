@@ -1,10 +1,14 @@
-package com.example.todoapp.repositories;
+package com.example.todoapp.repository;
 
 import com.example.todoapp.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.security.core.userdetails.UserDetails;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    User findByUsername(String username);
+    UserDetails findByUsername(String username);
+
+    @Query("select u from users u where u.username = ?1")
+    User findUserByUsername(String username);
 }
+
