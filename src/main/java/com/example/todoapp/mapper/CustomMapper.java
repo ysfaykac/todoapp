@@ -1,10 +1,9 @@
 package com.example.todoapp.mapper;
 
-import com.example.todoapp.dto.role.CreateRoleDto;
-import com.example.todoapp.dto.role.RoleDto;
+import com.example.todoapp.dto.todo.TodoDto;
 import com.example.todoapp.dto.user.CreateUserDto;
 import com.example.todoapp.dto.user.UserDto;
-import com.example.todoapp.entity.Role;
+import com.example.todoapp.entity.Todo;
 import com.example.todoapp.entity.User;
 import org.springframework.stereotype.Component;
 
@@ -21,36 +20,31 @@ public class CustomMapper {
                 .username(createUserDto.getUsername())
                 .password(createUserDto.getPassword())
                 .name(createUserDto.getName())
-                .roles(createRolesDtoToRoles(createUserDto.getRoleDtos()))
+                .role(createUserDto.getUserRole())
                 .build();
     }
-
     public UserDto userToUserDto(User user) {
-
         return UserDto.builder()
                 .id(user.getId())
                 .name(user.getName())
                 .username(user.getUsername())
+                .role(user.getRole())
                 .build();
     }
-
- public Role createRoleDtoToRole(CreateRoleDto createRoleDto) {
-        return Role.builder()
-                .name(createRoleDto.getName())
-                .build();
-    }
-    public Set<Role> createRolesDtoToRoles(Set<CreateRoleDto> createRoleDto) {
-        return createRoleDto.stream().map(this::createRoleDtoToRole).collect(Collectors.toSet());
-    }
-
-    public RoleDto roleToRoleDto(Role role) {
-        return RoleDto.builder()
-                .id(role.getId())
-                .name(role.getName())
-                .build();
-    }
-
     public List<UserDto> userListToUserDtoList(List<User> all) {
-        return  all.stream().map(this::userToUserDto).toList();
+        return all.stream().map(this::userToUserDto).toList();
+    }
+
+    public TodoDto todoToTodoDto(Todo todo) {
+        return TodoDto.builder()
+                .description(todo.getDescription())
+                .finished(todo.isFinished())
+                .id(todo.getId())
+                .userName(todo.getUser().getName())
+                .build();
+    }
+
+    public Set<TodoDto> todosToTodoDtos(List<Todo> todos) {
+        return todos.stream().map(this::todoToTodoDto).collect(Collectors.toSet());
     }
 }
