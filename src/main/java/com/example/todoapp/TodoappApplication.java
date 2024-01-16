@@ -1,7 +1,7 @@
 package com.example.todoapp;
 
-import com.example.todoapp.dto.role.CreateRoleDto;
 import com.example.todoapp.dto.user.CreateUserDto;
+import com.example.todoapp.entity.UserRole;
 import com.example.todoapp.services.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,17 +22,10 @@ public class TodoappApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(UserService userService){
 		return args -> {
-			userService.save(CreateRoleDto.builder().name("ROLE_USER").build());
-			userService.save(CreateRoleDto.builder().name("ROLE_ADMIN").build());
-			userService.save(CreateUserDto.builder().name("admin").username("admin").password("admin").roleDtos(new HashSet<>()).build());
-			userService.addRoleToUser("admin", "ROLE_ADMIN");
-			//userService.addRoleToUser("admin", "ROLE_USER");
+
+			userService.save(CreateUserDto.builder().name("admin").username("admin").password("admin").userRole(UserRole.USER).build());
+
+			var user= userService.getUser("admin");
 	};
 }
-  @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-
 }

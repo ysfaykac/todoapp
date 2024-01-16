@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b524cf93-f147-4a7d-9e6a-be7dc0df18b7",
+		"_postman_id": "10f8e69c-4292-4564-978d-2c4d0aebf719",
 		"name": "TODOS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "30207852"
@@ -105,8 +105,34 @@
 		{
 			"name": "AddTodo",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"string\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/todo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"todo"
+					]
+				}
 			},
 			"response": []
 		},
@@ -159,7 +185,10 @@
 			"name": "DeleteTodo",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": ""
+				}
 			},
 			"response": []
 		}
