@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "b524cf93-f147-4a7d-9e6a-be7dc0df18b7",
+		"name": "TODOS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30207852"
+	},
+	"item": [
+		{
+			"name": "GetTodo",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": "http://localhost:8080/api/v1/todo"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"admin\",\"password\":\"admin\"}"
+				},
+				"url": "http://localhost:8080/api/v1/user/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"test\",\"username\":\"test\",\"password\":\"test\",\"role\":\"ADMIN\"}"
+				},
+				"url": "http://localhost:8080/api/v1/user/register"
+			},
+			"response": []
+		},
+		{
+			"name": "AddTodo",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateTodo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsInVzZXJuYW1lIjoiYWRtaW4iLCJleHAiOjE3MDU0MzIzNTN9.WaTmCSgD3O_PCxuQvIByWjLbOURLXBXalVu6kHoQT4I"
+					}
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"description\":\"resttt\",\"isFinished\":true}"
+				},
+				"url": "http://localhost:8080/api/v1/todo/1"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteTodo",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
