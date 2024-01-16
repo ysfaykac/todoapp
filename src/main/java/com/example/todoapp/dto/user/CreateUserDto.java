@@ -1,9 +1,7 @@
 package com.example.todoapp.dto.user;
 
-import com.example.todoapp.dto.role.CreateRoleDto;
+import com.example.todoapp.entity.UserRole;
 import lombok.*;
-
-import java.util.Set;
 
 @Getter
 @Setter
@@ -15,5 +13,5 @@ public class CreateUserDto
     private String username;
     private String password;
     private String name;
-    private Set<CreateRoleDto> roleDtos;
+    private UserRole userRole;
 }
